@@ -1,0 +1,11 @@
+# Runtime dependencies for the Vercel Python function (api/index.py).
+# scikit-learn is deliberately absent: it pulls in scipy, and the two together exceed
+# the 225 MB function budget. api/model/model.json holds the exported logistic
+# regression instead, which app/services/json_model.py scores with numpy alone.
+# psycopg is the Postgres driver used when DATABASE_URL is set; without it the app
+# falls back to SQLite in /tmp, which does not survive a cold start.
+# Local development is unaffected and still uses backend/requirements.txt.
+fastapi==0.156.8
+pydantic==2.14.1
+numpy==2.5.4
+psycopg[binary]==3.3.8

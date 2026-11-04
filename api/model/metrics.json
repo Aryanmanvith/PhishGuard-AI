@@ -1,0 +1,250 @@
+{
+  "model_type": "Logistic regression on standardized URL features",
+  "trained_at": "2026-11-04T19:08:21Z",
+  "sklearn_version": "1.9.1",
+  "random_state": 42,
+  "feature_names": [
+    "url_length",
+    "host_length",
+    "path_length",
+    "query_length",
+    "host_dot_count",
+    "subdomain_count",
+    "hyphen_count_host",
+    "digit_count_host",
+    "digit_ratio_url",
+    "special_char_count",
+    "path_depth",
+    "query_param_count",
+    "has_ip_host",
+    "uses_https",
+    "has_at_symbol",
+    "has_credentials",
+    "has_punycode",
+    "has_nonstandard_port",
+    "is_shortener",
+    "keyword_count",
+    "brand_mismatch",
+    "suspicious_tld",
+    "percent_encoding_count",
+    "host_entropy",
+    "double_slash_in_path",
+    "max_label_length",
+    "embedded_url"
+  ],
+  "dataset": {
+    "name": "Synthetic demo sample (ml/generate_sample_data.py)",
+    "source": "Generated locally - NOT real phishing data",
+    "is_demo_data": true,
+    "rows_used": 2400,
+    "phishing_rows": 1200,
+    "benign_rows": 1200,
+    "skipped_unparseable": 0,
+    "note": "Synthetic data for demonstration. These metrics do NOT describe real-world accuracy."
+  },
+  "split": {
+    "method": "GroupShuffleSplit by registered domain (no domain in both sets)",
+    "test_size": 0.2,
+    "train_rows": 1925,
+    "test_rows": 475,
+    "train_domains": 1612,
+    "test_domains": 403
+  },
+  "metrics": {
+    "logistic_regression": {
+      "threshold": 0.5,
+      "n_test": 475,
+      "precision": 0.9681,
+      "recall": 0.9759,
+      "f1": 0.972,
+      "accuracy": 0.9705,
+      "roc_auc": 0.9957,
+      "confusion_matrix": [
+        [
+          218,
+          8
+        ],
+        [
+          6,
+          243
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "benign",
+        "phishing"
+      ]
+    },
+    "random_forest_baseline": {
+      "threshold": 0.5,
+      "n_test": 475,
+      "precision": 1.0,
+      "recall": 0.9839,
+      "f1": 0.9919,
+      "accuracy": 0.9916,
+      "roc_auc": 0.9997,
+      "confusion_matrix": [
+        [
+          226,
+          0
+        ],
+        [
+          4,
+          245
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "benign",
+        "phishing"
+      ]
+    }
+  },
+  "cross_validation": {
+    "method": "GroupKFold(n_splits=5) on the training portion, scoring=f1",
+    "f1_mean": 0.965,
+    "f1_std": 0.0078
+  },
+  "feature_importance": [
+    {
+      "feature": "digit_count_host",
+      "label": "Digits in hostname",
+      "coefficient": 4.3396
+    },
+    {
+      "feature": "keyword_count",
+      "label": "Suspicious keywords",
+      "coefficient": 4.1941
+    },
+    {
+      "feature": "subdomain_count",
+      "label": "Number of subdomains",
+      "coefficient": 2.2645
+    },
+    {
+      "feature": "has_ip_host",
+      "label": "IP-address hostname",
+      "coefficient": 2.0883
+    },
+    {
+      "feature": "digit_ratio_url",
+      "label": "Share of digits in URL",
+      "coefficient": 2.05
+    },
+    {
+      "feature": "suspicious_tld",
+      "label": "Frequently abused TLD",
+      "coefficient": 1.5192
+    },
+    {
+      "feature": "hyphen_count_host",
+      "label": "Hyphens in hostname",
+      "coefficient": -1.4738
+    },
+    {
+      "feature": "host_dot_count",
+      "label": "Dots in hostname",
+      "coefficient": -1.4501
+    },
+    {
+      "feature": "query_param_count",
+      "label": "Query parameters",
+      "coefficient": -1.139
+    },
+    {
+      "feature": "url_length",
+      "label": "URL length",
+      "coefficient": 1.0249
+    },
+    {
+      "feature": "host_length",
+      "label": "Hostname length",
+      "coefficient": 0.9838
+    },
+    {
+      "feature": "host_entropy",
+      "label": "Domain name randomness (entropy)",
+      "coefficient": 0.948
+    },
+    {
+      "feature": "has_nonstandard_port",
+      "label": "Unusual port",
+      "coefficient": -0.7739
+    },
+    {
+      "feature": "special_char_count",
+      "label": "Special characters (@ ? & = _ % ~ #)",
+      "coefficient": 0.6985
+    },
+    {
+      "feature": "path_depth",
+      "label": "Path depth",
+      "coefficient": -0.6869
+    },
+    {
+      "feature": "brand_mismatch",
+      "label": "Brand name on unrelated domain",
+      "coefficient": 0.3399
+    },
+    {
+      "feature": "query_length",
+      "label": "Query string length",
+      "coefficient": 0.3154
+    },
+    {
+      "feature": "has_at_symbol",
+      "label": "Contains '@'",
+      "coefficient": 0.2839
+    },
+    {
+      "feature": "has_credentials",
+      "label": "Embedded credentials",
+      "coefficient": 0.2839
+    },
+    {
+      "feature": "has_punycode",
+      "label": "Punycode / non-ASCII host",
+      "coefficient": 0.1365
+    },
+    {
+      "feature": "path_length",
+      "label": "Path length",
+      "coefficient": -0.1088
+    },
+    {
+      "feature": "max_label_length",
+      "label": "Longest hostname label",
+      "coefficient": -0.091
+    },
+    {
+      "feature": "uses_https",
+      "label": "Uses HTTPS",
+      "coefficient": -0.0491
+    },
+    {
+      "feature": "is_shortener",
+      "label": "URL shortener",
+      "coefficient": 0.0
+    },
+    {
+      "feature": "percent_encoding_count",
+      "label": "Percent-encoded characters",
+      "coefficient": 0.0
+    },
+    {
+      "feature": "double_slash_in_path",
+      "label": "'//' inside path",
+      "coefficient": 0.0
+    },
+    {
+      "feature": "embedded_url",
+      "label": "URL embedded in URL",
+      "coefficient": 0.0
+    }
+  ],
+  "limitations": [
+    "Uses only lexical features of the URL string; it never sees page content, domain age or reputation.",
+    "Learns the biases of its training set. Public datasets differ from live traffic and age quickly.",
+    "Scores are not calibrated probabilities."
+  ],
+  "model_sha256": "ea1c4c32f40e5dbe590b25849f2b286cf42f1fb20ff0b15f6131e23405a85c2c",
+  "model_format": "phishguard-logreg-1"
+}

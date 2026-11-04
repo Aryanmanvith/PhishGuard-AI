@@ -1,0 +1,17 @@
+# Vercel reads this instead of .gitignore. The trained demo model under
+# backend/ml/artifacts IS git-ignored but MUST ship to the function, so it is
+# deliberately not listed here.
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+node_modules/
+frontend/dist/
+.env
+backend/data/*.db
+backend/data/raw/
+backend/data/processed/
+backend/tests/
+docs/
+setup.bat
+run.bat

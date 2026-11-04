@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Local data and secrets
+.env
+.env.local
+.env.*.local
+backend/data/*.db
+backend/data/raw/
+backend/data/processed/
+
+# Trained model files are produced by `python -m ml.train` (they depend on your scikit-learn version)
+backend/ml/artifacts/*
+!backend/ml/artifacts/.gitkeep
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Deployment / tooling state (holds account and project identifiers)
+.vercel/
