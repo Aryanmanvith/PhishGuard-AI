@@ -145,3 +145,7 @@ ML model page, and the dashboard at phone width. Save them in `docs/screenshots/
 Static analysis cannot see page content, redirects, certificates, domain age or reputation. The bundled
 model is trained on synthetic demo data unless you train on a real dataset. There is no authentication,
 so run it locally only. See `docs/SECURITY.md`.
+
+## License
+
+MIT - see [LICENSE](LICENSE).
